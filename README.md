@@ -1,2 +1,2 @@
 # Kazuhira
-ZShell and Bash Scripts
+Repository for all my ZShell and Bash Scripts
