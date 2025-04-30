@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Check if Mac is Apple Silicon
+if /usr/bin/arch | grep -q arm64; then
+    echo "Apple Silicon detected. Installing Rosetta 2..."
+    /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+else
+    echo "Intel Mac detected. Skipping Rosetta 2 installation."
+fi
+
+exit 0
