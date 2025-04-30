@@ -1,0 +1,11 @@
+# Search for specific running processes with a 'launchctl list'
+# Use a grep (Globally Search for Regular Expression and Print) and specific label
+
+launchctl list | grep "PROCESS_LABEL"
+
+# Bootstrap the Agent process to memory
+
+launchctl bootstrap 'gui/UUID' 'PATH/TO/FILE'
+
+# Bootout the Agent from memory
+launchctl bootout 'gui/UUID' 'PATH/TO/FILE'

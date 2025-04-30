@@ -1,0 +1,39 @@
+LaunchAgents/LaunchDaemons
+=============================
+
+Locations:
+Users
+- /Users/<someUser>/Library/LaunchAgents -> Only launching when that user logs in
+
+Root
+- /Library/LaunchAgents -> Launch when any User logs in, runs as that logged in user
+- /Library/LaunchDaemons -> Launch when system starts, runs as root/system
+
+System
+- /System/Library/LaunchAgents -> Launches when any user logs in, runs as the logged in user (Curated by Apple)
+- /System/Library/LaunchDaemons -> Launch at system startup, runs as root/system (Curated by Apple)
+
+Creating a LaunchAgent / LaunchDaemon:
+
+1. Build our LaunchAgent/Daemon
+	- Required Fields
+		- Label Name
+		- ProgramArguments
+2. Put the Agent/Daemon in the correct folder
+	- Permissions:
+		LaunchDaemons:
+		- sudo chown root:wheel /PATH/TO/FILE
+		- sudo chmod 644 PATH/TO/FILE
+		LaunchAgents:
+		- chmod 644 PATH/TO/FILE
+	- Folder Locations
+		- LaunchAgents in the LaunchAgents Folder
+		- LaunchDaemons in the LaunchDaemons Folder
+		
+3. Bootstrap It
+	- Agents are bootstrapped to 'gui/uuid number'
+	- Daemons are bootstrapped to 'system'
+	
+4. Start/Stop the process
+	- Agents are booted out from 'gui/uuid number'
+	- Daemons are booted out from 'system'
