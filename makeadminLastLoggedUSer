@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+# Get the last logged-in user from the Apple .lastLogin plist
+lastUser=$(/usr/bin/defaults read /Library/Preferences/com.apple.loginwindow lastUserName)
+
+# Validate the username
+if [[ -z "$lastUser" ]]; then
+    echo "No last logged-in user found. Exiting."
+    exit 1
+fi
+
+# Log the action
+echo "Granting admin rights to last logged-in user: $lastUser"
+
+# Add the user to the admin group
+/usr/sbin/dseditgroup -o edit -a "$lastUser" -t user admin
+
+# Confirm change
+if /usr/sbin/dseditgroup -o checkmember -m "$lastUser" admin | grep -q "yes"; then
+    echo "User $lastUser successfully added to admin group."
+else
+    echo "Failed to add $lastUser to admin group."
+    exit 2
+fi
+
+exit 0
