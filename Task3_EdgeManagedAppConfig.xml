@@ -1,0 +1,6 @@
+<dict>
+	<key>NewTabPageLocation</key>
+	<string>https://jamf.com</string>
+	<key>disabledFeatures</key>
+	<string>password</string>
+</dict>

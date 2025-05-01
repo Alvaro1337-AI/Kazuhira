@@ -1,0 +1,6 @@
+<dict>
+	<key>DisableFacebookLogin</key>
+	<true/>
+	<key>DisableGoogleLogin</key>
+	<true/>
+</dict>
